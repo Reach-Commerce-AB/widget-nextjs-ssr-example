@@ -1,0 +1,7 @@
+.next
+node_modules
+.yarn/*
+yarn-error.log
+.env.local
+.vercel
+tsconfig.tsbuildinfo
