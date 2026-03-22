@@ -10,7 +10,7 @@ export function ConfigNote({ apiBaseUrl }: ConfigNoteProps) {
 			<p className="eyebrow">Missing publisher credentials</p>
 			<h2>Configure publisher credentials to render storefront data</h2>
 			<p>
-				This example authenticates against Reach Orders on the server, so it
+				This example authenticates against the Loyative API on the server, so it
 				needs publisher credentials in <code>.env.local</code>.
 			</p>
 			<div className="config-grid">
@@ -36,9 +36,7 @@ export function ConfigNote({ apiBaseUrl }: ConfigNoteProps) {
 				refreshes the session when needed before calling the protected
 				<code>/storefront/*</code> endpoints.
 			</p>
-			<Link href="https://api.reachorders.com/api">
-				Open Reach Orders API docs
-			</Link>
+			<Link href="https://api.reachorders.com/api">Open Loyative API docs</Link>
 		</section>
 	);
 }

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "Reach Orders Storefront SSR Example",
+	title: "Loyative Storefront SSR Example",
 	description:
-		"Loyative widget plus Reach Orders storefront API rendered through Next.js SSR.",
+		"Loyative widget plus Loyative storefront API rendered through Next.js SSR.",
 };
 
 type RootLayoutProps = {

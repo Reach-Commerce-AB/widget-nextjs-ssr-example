@@ -101,7 +101,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
 							dangerouslySetInnerHTML={{ __html: product.description }}
 						/>
 					) : (
-						<p className="muted">No description returned by Reach Orders.</p>
+						<p className="muted">
+							No description returned by the Loyative API.
+						</p>
 					)}
 				</div>
 			</section>

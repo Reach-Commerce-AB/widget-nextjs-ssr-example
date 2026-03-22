@@ -15,12 +15,12 @@ export default async function HomePage() {
 		return (
 			<main className="page-shell">
 				<section className="hero">
-					<p className="eyebrow">Reach Orders + Loyative</p>
-					<h1>Reach Orders storefront SSR example</h1>
+					<p className="eyebrow">Loyative API + Loyative Widget</p>
+					<h1>Loyative storefront SSR example</h1>
 					<p className="lede">
-						This app renders storefront data from Reach Orders on the server,
-						then enhances the product page with the Loyative widget on the
-						client.
+						This app renders storefront data from the Loyative API on the
+						server, then enhances the product page with the Loyative widget on
+						the client.
 					</p>
 				</section>
 				<ConfigNote apiBaseUrl={config.apiBaseUrl} />
@@ -41,8 +41,8 @@ export default async function HomePage() {
 	return (
 		<main className="page-shell">
 			<section className="hero">
-				<p className="eyebrow">Reach Orders + Loyative</p>
-				<h1>Reach Orders storefront SSR example</h1>
+				<p className="eyebrow">Loyative API + Loyative Widget</p>
+				<h1>Loyative storefront SSR example</h1>
 				<p className="lede">
 					Top-level categories are fetched first, then products are fetched from
 					each visible category on the server.

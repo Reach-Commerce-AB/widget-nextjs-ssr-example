@@ -1,12 +1,12 @@
 # `widget-nextjs-ssr-example`
 
-Example integration of Loyative Widget Script with Next.js and Reach Orders
+Example integration of Loyative Widget Script with Next.js and the Loyative
 storefront API.
 
 This example shows how to:
 
 - render storefront categories and products on the server with Next.js
-- authenticate against Reach Orders with publisher credentials on the server
+- authenticate against the Loyative API with publisher credentials on the server
 - cache access and refresh tokens in server memory
 - enhance the product detail page on the client with Loyative Widget Script
 
@@ -35,7 +35,7 @@ This example shows how to:
    Notes:
 
    - `PUBLISHER_USERNAME` is sent as the `email` field to `/auth/sign-in`
-     because that is what the Reach Orders API expects.
+     because that is what the Loyative API expects.
    - If you accidentally use `https://api.reachorders.com/api`, the app now
      normalizes that automatically to the working API origin.
    - Access and refresh tokens are kept in process memory on the server side.
@@ -65,8 +65,8 @@ Open `http://localhost:3000`.
 
 ## Rendering Model
 
-- Reach Orders storefront data is fetched on the server and rendered into the
-  HTML response.
+- Loyative storefront data is fetched on the server and rendered into the HTML
+  response.
 - Loyative widget script is loaded only on the client.
 - The product page renders buy-button placeholder markup in HTML, then calls
   `xProduct()` after the Loyative script loads.
@@ -76,10 +76,17 @@ Open `http://localhost:3000`.
   ${LOYATIVE_WIDGET_URL}.js?${ECWID_STORE_ID}
   ```
 
-Because Reach Orders does not expose a single-product storefront endpoint, the
+Because the Loyative API does not expose a single-product storefront endpoint, the
 product detail route includes both category information and product ID so the
 server can fetch the category product list and resolve the correct product from
 that result.
+
+## Notes
+
+- The API host currently uses the `reachorders.com` domain, but in this example
+  it is treated as the Loyative API in all user-facing copy.
+- The app trims accidental surrounding quotes and trailing whitespace from the
+  relevant env vars to be more tolerant of Vercel secret formatting mistakes.
 
 ## GitHub Actions
 
