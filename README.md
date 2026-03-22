@@ -94,8 +94,6 @@ The repository includes a GitHub Actions workflow at `.github/workflows/ci.yml`.
 
 It runs these checks on pull requests and pushes to `main`:
 
-- Biome formatting check
-- Biome lint check
 - Next.js ESLint
 - TypeScript typecheck
 - Next.js production build

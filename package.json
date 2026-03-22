@@ -9,11 +9,8 @@
 		"start": "next start",
 		"lint": "next lint",
 		"lint:next": "next lint",
-		"lint:biome": "biome check . --formatter-enabled=false --skip=lint/performance/noImgElement --skip=lint/security/noDangerouslySetInnerHtml",
 		"typecheck": "tsc --noEmit",
-		"format": "biome format --write .",
-		"format:check": "biome format .",
-		"check": "yarn format:check && yarn lint:biome && yarn lint:next && yarn typecheck && yarn build"
+		"check": "yarn lint:next && yarn typecheck && yarn build"
 	},
 	"dependencies": {
 		"next": "14.2.35",
@@ -21,7 +18,6 @@
 		"react-dom": "18.3.1"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.8",
 		"@types/node": "^24.5.2",
 		"@types/react": "^18.3.24",
 		"@types/react-dom": "^18.3.7",

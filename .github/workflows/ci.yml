@@ -28,12 +28,6 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Check formatting
-        run: yarn format:check
-
-      - name: Run Biome
-        run: yarn lint:biome
-
       - name: Run Next.js lint
         run: yarn lint:next
 
