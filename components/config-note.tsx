@@ -1,42 +1,43 @@
 import Link from "next/link";
 
 type ConfigNoteProps = {
-	storeId: string;
+	apiBaseUrl: string;
 };
 
-export function ConfigNote({ storeId }: ConfigNoteProps) {
+export function ConfigNote({ apiBaseUrl }: ConfigNoteProps) {
 	return (
 		<section className="config-note">
-			<p className="eyebrow">Missing ECWID_PUBLIC_TOKEN</p>
-			<h2>Configure a public token to render real SSR product data</h2>
+			<p className="eyebrow">Missing publisher credentials</p>
+			<h2>Configure publisher credentials to render storefront data</h2>
 			<p>
-				This example is built for server-side rendering via Ecwid REST API, so
-				it needs a public token in <code>.env.local</code>.
+				This example authenticates against Reach Orders on the server, so it
+				needs publisher credentials in <code>.env.local</code>.
 			</p>
 			<div className="config-grid">
 				<div>
-					<strong>Store ID</strong>
-					<p>{storeId}</p>
+					<strong>API base URL</strong>
+					<p>{apiBaseUrl}</p>
 				</div>
 				<div>
 					<strong>Required env vars</strong>
 					<p>
+						<code>PUBLISHER_API_BASE_URL</code>
+						<br />
+						<code>PUBLISHER_USERNAME</code>
+						<br />
+						<code>PUBLISHER_PASSWORD</code>
+						<br />
 						<code>ECWID_STORE_ID</code>
-						<br />
-						<code>ECWID_PUBLIC_TOKEN</code>
-						<br />
-						<code>ECWID_SECRET_TOKEN</code>
 					</p>
 				</div>
 			</div>
 			<p className="muted">
-				Use a public token if it has the access you need. If Ecwid returns 403,
-				you can use a secret token here because this app reads it only on the
-				server. Once configured, the HTML for this page will already contain
-				Ecwid product names, prices, and descriptions from the server response.
+				The server signs in, keeps the access and refresh tokens in memory, and
+				refreshes the session when needed before calling the protected
+				<code>/storefront/*</code> endpoints.
 			</p>
-			<Link href="https://support.ecwid.com/hc/en-us/articles/13087127122204-Selling-on-Next-js-Commerce-with-Ecwid">
-				Open Ecwid headless guide
+			<Link href="https://api.reachorders.com/api">
+				Open Reach Orders API docs
 			</Link>
 		</section>
 	);

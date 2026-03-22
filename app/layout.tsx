@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "Ecwid Full SSR Example",
+	title: "Reach Orders Storefront SSR Example",
 	description:
-		"Headless Ecwid SSR example powered by Next.js server rendering.",
+		"Loyative widget plus Reach Orders storefront API rendered through Next.js SSR.",
 };
 
 type RootLayoutProps = {

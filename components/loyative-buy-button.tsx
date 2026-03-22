@@ -3,8 +3,8 @@
 import { useEffect } from "react";
 
 type LoyativeBuyButtonProps = {
-	productId: number;
-	storeId: string;
+	productId: string;
+	ecwidStoreId: string;
 	widgetUrl: string;
 };
 
@@ -12,7 +12,7 @@ const addToBagProps = {
 	customprop: "addtobag",
 } as React.HTMLAttributes<HTMLDivElement>;
 
-function ensureWidgetScript(storeId: string, widgetUrl: string) {
+function ensureWidgetScript(ecwidStoreId: string, widgetUrl: string) {
 	if (typeof window === "undefined") {
 		return Promise.resolve();
 	}
@@ -44,7 +44,7 @@ function ensureWidgetScript(storeId: string, widgetUrl: string) {
 		const script = document.createElement("script");
 		script.id = "loyative-init-script";
 		script.async = true;
-		script.src = `${widgetUrl}.js?${storeId}`;
+		script.src = `${widgetUrl}.js?${ecwidStoreId}`;
 		script.onload = () => {
 			script.dataset.loaded = "true";
 			resolve();
@@ -59,14 +59,14 @@ function ensureWidgetScript(storeId: string, widgetUrl: string) {
 
 export function LoyativeBuyButton({
 	productId,
-	storeId,
+	ecwidStoreId,
 	widgetUrl,
 }: LoyativeBuyButtonProps) {
 	useEffect(() => {
 		let cancelled = false;
 		const currentProductId = productId;
 
-		ensureWidgetScript(storeId, widgetUrl)
+		ensureWidgetScript(ecwidStoreId, widgetUrl)
 			.then(() => {
 				if (!cancelled && currentProductId) {
 					window.xProduct?.();
@@ -79,7 +79,7 @@ export function LoyativeBuyButton({
 		return () => {
 			cancelled = true;
 		};
-	}, [productId, storeId, widgetUrl]);
+	}, [ecwidStoreId, productId, widgetUrl]);
 
 	return (
 		<div
