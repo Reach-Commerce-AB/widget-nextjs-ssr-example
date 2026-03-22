@@ -12,6 +12,17 @@ import {
 
 export const dynamic = "force-dynamic";
 
+function sanitizeEnvValue(value: string | undefined) {
+	if (!value) {
+		return undefined;
+	}
+
+	return value
+		.trim()
+		.replace(/^"(.*)"$/, "$1")
+		.trim();
+}
+
 type ProductPageProps = {
 	params: {
 		categoryId: string;
@@ -31,11 +42,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 	}
 
 	const categoryName = getDisplayCategoryName(params.categorySlug);
-	const ecwidStoreId = process.env.ECWID_STORE_ID;
+	const ecwidStoreId = sanitizeEnvValue(process.env.ECWID_STORE_ID);
 	const availability = getStorefrontProductAvailability(product);
 	const imageUrl = getStorefrontProductImage(product);
 	const widgetUrl =
-		process.env.LOYATIVE_WIDGET_URL ?? "https://store.loyative.com/widget";
+		sanitizeEnvValue(process.env.LOYATIVE_WIDGET_URL) ??
+		"https://store.loyative.com/widget";
 
 	return (
 		<main className="page-shell">

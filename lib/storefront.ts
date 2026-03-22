@@ -42,10 +42,22 @@ type SessionState = {
 	refreshTokenExpiresAt: number | null;
 };
 
+function sanitizeEnvValue(value: string | undefined) {
+	if (!value) {
+		return undefined;
+	}
+
+	return value
+		.trim()
+		.replace(/^"(.*)"$/, "$1")
+		.trim();
+}
+
 const rawPublisherApiBaseUrl =
-	process.env.PUBLISHER_API_BASE_URL ?? "https://api.reachorders.com";
-const publisherPassword = process.env.PUBLISHER_PASSWORD;
-const publisherUsername = process.env.PUBLISHER_USERNAME;
+	sanitizeEnvValue(process.env.PUBLISHER_API_BASE_URL) ??
+	"https://api.reachorders.com";
+const publisherPassword = sanitizeEnvValue(process.env.PUBLISHER_PASSWORD);
+const publisherUsername = sanitizeEnvValue(process.env.PUBLISHER_USERNAME);
 const storefrontImageBaseUrl =
 	"https://s3.eu-north-1.amazonaws.com/reach.images";
 
