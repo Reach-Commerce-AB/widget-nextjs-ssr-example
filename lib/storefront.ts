@@ -72,6 +72,7 @@ function normalizePublisherApiBaseUrl(baseUrl: string) {
 const publisherApiBaseUrl = normalizePublisherApiBaseUrl(
 	rawPublisherApiBaseUrl,
 );
+const storefrontRevalidateSeconds = 60;
 
 let sessionState: SessionState | null = null;
 
@@ -199,7 +200,9 @@ async function storefrontFetch<T>(path: string): Promise<T> {
 		headers: {
 			Authorization: `Bearer ${session.accessToken}`,
 		},
-		cache: "no-store",
+		next: {
+			revalidate: storefrontRevalidateSeconds,
+		},
 	});
 
 	if (response.status === 401) {
@@ -213,7 +216,9 @@ async function storefrontFetch<T>(path: string): Promise<T> {
 			headers: {
 				Authorization: `Bearer ${refreshedSession.accessToken}`,
 			},
-			cache: "no-store",
+			next: {
+				revalidate: storefrontRevalidateSeconds,
+			},
 		});
 
 		if (!retryResponse.ok) {
